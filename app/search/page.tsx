@@ -14,8 +14,8 @@ interface SearchPageProps {
  * Each search creates a new server request with fresh results.
  */
 export default async function SearchPage({ searchParams }: SearchPageProps) {
-  const { q: query = '' } = await searchParams
-  const results = query ? searchPosts(query) : []
+  const { q: query = '' } = searchParams
+  const results = []
 
   return (
     <div className="container mx-auto px-4 py-12">
@@ -39,9 +39,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
         </div>
       )}
 
-      {query ? (
-        <SearchResults posts={results} query={query} />
-      ) : (
+      {(
         <div className="text-center py-12">
           <div className="max-w-md mx-auto">
             <p className="text-muted-foreground text-lg mb-4">

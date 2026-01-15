@@ -1,6 +1,3 @@
-import { getAllPosts } from '@/app/lib/posts'
-import { PostList } from '@/components/blog/post-list'
-
 /**
  * Home page - Static Site Generation (SSG)
  *
@@ -8,7 +5,6 @@ import { PostList } from '@/components/blog/post-list'
  * The HTML is generated once during build and served as static files.
  */
 export default function HomePage() {
-  const posts = getAllPosts() // Called at build time
 
   return (
     <div className="container mx-auto px-4 py-12">
@@ -37,7 +33,6 @@ export default function HomePage() {
 
       <section>
         <h2 className="text-2xl md:text-3xl font-bold mb-6">Últimos Posts</h2>
-        <PostList posts={posts} />
       </section>
     </div>
   )

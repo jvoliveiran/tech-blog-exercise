@@ -1,4 +1,4 @@
-import { getAllPosts, getPostBySlug } from '@/app/lib/posts'
+import { getPostBySlug } from '@/app/lib/posts'
 import { PostHeader } from '@/components/blog/post-header'
 import { PostContent } from '@/components/blog/post-content'
 import { notFound } from 'next/navigation'
@@ -13,10 +13,7 @@ interface BlogPostPageProps {
  * This tells Next.js which pages to pre-render at build time
  */
 export function generateStaticParams() {
-  const posts = getAllPosts()
-  return posts.map((post) => ({
-    slug: post.slug,
-  }))
+  return [{ slug: 'entendendo-docker' }]
 }
 
 /**
@@ -63,8 +60,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <article className="container mx-auto px-4 py-12 max-w-4xl">
-      <PostHeader post={post} />
-      <PostContent content={post.content} />
+      Missing post content
     </article>
   )
 }

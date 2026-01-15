@@ -1,5 +1,3 @@
-"use client"
-
 import { useState, useEffect } from 'react'
 import { getAllPosts } from '@/app/lib/posts'
 import { StatsCard } from '@/components/dashboard/stats-card'
@@ -37,14 +35,12 @@ export default function DashboardPage() {
         0
       )
       const avgReadTime = totalReadTime / posts.length
-
-      setStats({
+      const stats = {
         totalPosts: posts.length,
         avgReadTime: Math.round(avgReadTime * 10) / 10,
         lastView: new Date().toISOString(),
         viewsToday: Math.floor(Math.random() * 50) + 10,
-      })
-      setLoading(false)
+      }
     }
 
     fetchStats()

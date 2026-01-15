@@ -1,7 +1,7 @@
 "use client"
 
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 interface ActivityData {
   day: string
@@ -13,17 +13,14 @@ interface ActivityData {
  * Client component with mock data visualization
  */
 export function ActivityChart() {
-  const [activityData, setActivityData] = useState<ActivityData[]>([])
-
-  useEffect(() => {
-    // Generate mock activity data for the last 7 days
+  // lazy initialization
+  const [activityData] = useState<ActivityData[]>(() => {
     const days = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb']
-    const data = days.map((day) => ({
+    return days.map((day) => ({
       day,
       views: Math.floor(Math.random() * 50) + 10,
     }))
-    setActivityData(data)
-  }, [])
+  })
 
   const maxViews = Math.max(...activityData.map((d) => d.views), 1)
 
